@@ -1,8 +1,11 @@
 var winner = document.getElementById("winner");
 var playerChoiceElement = document.getElementById("playerChoice");
 var playerWinCountElement = document.getElementById("playerWinCount");
+var playerBadge = document.getElementById("playerBadge");
 var computerChoiceElement = document.getElementById("computerChoice");
 var computerWinCountElement = document.getElementById("computerWinCount");
+var computerBadge = document.getElementById("computerBadge");
+
 var playerWinCount = 0;
 var computerWinCount = 0;
 
@@ -73,6 +76,19 @@ function setPlayerComputerElements(playerKey, computerKey) {
     playerWinCountElement.textContent = playerWinCount;
     computerChoiceElement.textContent = choicesDict[computerKey];
     computerWinCountElement.textContent = computerWinCount;
+
+    if (playerWinCount > computerWinCount){
+        playerBadge.className = "badge badge-success";
+        computerBadge.className = "badge badge-danger";
+    }
+    else if (playerWinCount < computerWinCount){
+        playerBadge.className = "badge badge-danger";
+        computerBadge.className = "badge badge-success";
+    }
+    else{
+        playerBadge.className = "badge badge-warning";
+        computerBadge.className = "badge badge-warning";
+    }
 }
 
 async function startGame() {
